@@ -57,4 +57,19 @@ void __error__(char *pcFilename, uint32_t ui32Line) {
 // Blink the on-board LED.
 //
 //*****************************************************************************
-int main(void) { return 0; }
+int main(void) {
+  int counter = 0;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+  counter++;
+
+  return 0;
+}
