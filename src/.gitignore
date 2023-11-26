@@ -2,3 +2,5 @@
 */gcc/*.d
 */gcc/*.bin
 */gcc/*.axf
+*/startup_*.o
+*/startup_*.d

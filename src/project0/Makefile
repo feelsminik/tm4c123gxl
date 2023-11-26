@@ -73,7 +73,8 @@ ${COMPILER}:
 # Rules for building the Project Zero Example.
 #
 ${COMPILER}/$(PROJ_NAME).axf: ${COMPILER}/$(PROJ_NAME).o
-${COMPILER}/$(PROJ_NAME).axf: ${COMPILER}/startup_${COMPILER}.o
+# ${COMPILER}/$(PROJ_NAME).axf: ${COMPILER}/startup_${COMPILER}.o
+${COMPILER}/$(PROJ_NAME).axf: startup_${COMPILER}.o
 ${COMPILER}/$(PROJ_NAME).axf: ${ROOT}/driverlib/${COMPILER}/libdriver.a
 ${COMPILER}/$(PROJ_NAME).axf: $(PROJ_NAME).ld
 SCATTERgcc_$(PROJ_NAME)=$(PROJ_NAME).ld
