@@ -25,10 +25,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "driverlib/debug.h"
-#include "driverlib/gpio.h"
-#include "driverlib/sysctl.h"
-#include "inc/hw_memmap.h"
+/* #include "driverlib/debug.h" */
+/* #include "driverlib/gpio.h" */
+/* #include "driverlib/sysctl.h" */
+/* #include "inc/hw_memmap.h" */
 
 //*****************************************************************************
 //
@@ -59,17 +59,8 @@ void __error__(char *pcFilename, uint32_t ui32Line) {
 //*****************************************************************************
 int main(void) {
   int counter = 0;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-  counter++;
-
+  while (1) {
+    counter++;
+  }
   return 0;
 }
