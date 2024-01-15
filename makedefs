@@ -1,10 +1,7 @@
-ifndef COMPILER
 COMPILER=gcc
-endif
-
+CFLAGSgcc=-DTARGET_IS_TM4C123_RB1
 PREFIX:=arm-none-eabi
 CC=${PREFIX}-gcc
-ARMGCC_ROOT:=${shell dirname '${shell sh -c "which ${CC}"}'}/..
 AR=${PREFIX}-ar
 OBJCOPY=${PREFIX}-objcopy
 LD=${PREFIX}-ld
@@ -39,20 +36,21 @@ CFLAGS+=-g -D DEBUG -O0
 else
 CFLAGS+=-Os
 endif
+
 CFLAGS+=${CFLAGSgcc}
 CFLAGS+= -I${IPATH}
 AFLAGS+= -I${IPATH}
 
-${COMPILER}/%.o: %.c
+build/%.o: %.c
 	@${CC} ${CFLAGS} -D${COMPILER} -o ${@} ${<}
 
-${COMPILER}/%.o: %.S
+build/%.o: %.S
 	@${CC} ${AFLAGS} -D${COMPILER} -o ${@} -c ${<}
 
-${COMPILER}/%.a:
+build/%.a:
 	@${AR} -cr ${@} ${^}
 
-${COMPILER}/%.axf:
+build/%.axf:
 	@if [ 'x${SCATTERgcc_${notdir ${@:.axf=}}}' = x ];					\
 	then																 \
 		ldname="${ROOT}/gcc/standalone.ld";							  \
