@@ -57,10 +57,35 @@ void __error__(char *pcFilename, uint32_t ui32Line) {
 // Blink the on-board LED.
 //
 //*****************************************************************************
+void wait();
+
 int main(void) {
-  int counter = 0;
+  unsigned int *RCGCGPIO = (unsigned int *)0x400FE608U;
+  unsigned int *GPIOFDIR = (unsigned int *)0x40025400U;
+  unsigned int *GPIOFDEN = (unsigned int *)0x4002551CU;
+  unsigned int *GPIOFDATA = (unsigned int *)0x40025000U;
+
+  *RCGCGPIO = 0x20;
+  *GPIOFDIR = 0x0EU;
+  *GPIOFDEN = 0x0EU;
+
+  /* *((volatile unsigned int *)0x400FE608U) = 0x20U; */
+  /* *((volatile unsigned int *)0x40025400U) = 0x0EU; */
+  /* *((volatile unsigned int *)0x4002551CU) = 0x0EU; */
+
   while (1) {
-    counter++;
+    // 0b 0000 1110
+    *GPIOFDATA = 0x02U;
+    wait();
+    *GPIOFDATA = 0x04U;
+    wait();
   }
   return 0;
+}
+
+void wait(void) {
+  int counter = 0;
+  while (counter < 1000000000) {
+    counter++;
+  }
 }
