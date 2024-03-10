@@ -32,8 +32,10 @@ all: build/$(PROJ_NAME).axf
 clean:
 	@rm -rf gcc ${wildcard *~}
 
-flash: build/$(PROJ_NAME).bin
+lm4flash: build/$(PROJ_NAME).bin
 		$(LM4FLASH) $<
+
+flash: clean all lm4flash
 
 #
 # Rules for building the Project Zero Example.

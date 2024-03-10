@@ -4,3 +4,4 @@
 */gcc/*.axf
 */startup_*.o
 */startup_*.d
+*/build/*
