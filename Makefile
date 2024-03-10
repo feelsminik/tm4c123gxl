@@ -1,4 +1,4 @@
-PROJ_NAME=project0
+PROJ_NAME=hello_blink
 COMPILER=gcc
 LM4FLASH = lm4flash
 
@@ -43,16 +43,19 @@ LIBM:=${shell ${CC} ${CFLAGS} -print-file-name=libm.a}
 all: build/$(PROJ_NAME).axf
 
 build/$(PROJ_NAME).axf: build/$(PROJ_NAME).o
-build/$(PROJ_NAME).axf: startup_${COMPILER}.o
+build/$(PROJ_NAME).axf: build/startup.o
 
 build/$(PROJ_NAME).axf:
-	$(LD) -T "project0.ld" \
+	$(LD) -T "linker_script.ld" \
 		--entry ResetISR \
 		${LDFLAGS} -o $@ $(filter %.o %.a, $^) \
 		'${LIBM}' '${LIBC}' '${LIBGCC}'
 	@${OBJCOPY} -O binary $@ ${@:.axf=.bin}
 
 build/%.o: src/%.c
+	$(CC) $(CFLAGS) -D$(COMPILER) -o $@ $<
+
+build/%.o: %.c
 	$(CC) $(CFLAGS) -D$(COMPILER) -o $@ $<
 
 lm4flash: build/$(PROJ_NAME).bin

@@ -1,4 +1,4 @@
-startup_gcc.o: startup_gcc.c \
+build/startup.o: startup.c \
  /usr/lib/gcc/arm-none-eabi/13.2.0/include/stdint.h \
  /usr/arm-none-eabi/include/stdint.h \
  /usr/arm-none-eabi/include/machine/_default_types.h \
