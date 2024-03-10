@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "include/tm4c123gh6pm.h"
+#include "../include/tm4c123gh6pm.h"
 
 void wait(int);
 void activate_port_f(void);
@@ -12,6 +12,10 @@ void show_led_gradient(void);
 int main(void) {
   activate_port_f();
 
+  /* while (1) { */
+  /*   turn_led_on(0x02); */
+  /*   turn_led_off(); */
+  /* } */
   show_led_gradient();
 
   return 0;
