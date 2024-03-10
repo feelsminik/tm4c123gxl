@@ -1,25 +1,13 @@
-PART=TM4C123GH6PM
-
-#
-# The base directory for TivaWare.
-#
-ROOT=../..
-
-#
-# Include the common make definitions.
-#
-# include ${ROOT}/makedefs
-
-
 COMPILER=gcc
-CFLAGSgcc=-DTARGET_IS_TM4C123_RB1
+LM4FLASH = lm4flash
+
 PREFIX:=arm-none-eabi
 CC=${PREFIX}-gcc
 AR=${PREFIX}-ar
 OBJCOPY=${PREFIX}-objcopy
 LD=${PREFIX}-ld
-LM4FLASH = lm4flash
 
+PART=TM4C123GH6PM
 CPU=-mcpu=cortex-m4
 FPU=-mfpu=fpv4-sp-d16 -mfloat-abi=hard
 
@@ -50,6 +38,7 @@ else
 CFLAGS+=-Os
 endif
 
+CFLAGSgcc=-DTARGET_IS_TM4C123_RB1
 CFLAGS+=${CFLAGSgcc}
 CFLAGS+= -I${IPATH}
 AFLAGS+= -I${IPATH}
@@ -64,12 +53,7 @@ build/%.a:
 	@${AR} -cr ${@} ${^}
 
 build/%.axf:
-	@if [ 'x${SCATTERgcc_${notdir ${@:.axf=}}}' = x ];					\
-	then																 \
-		ldname="${ROOT}/gcc/standalone.ld";							  \
-	else																 \
-		ldname="${SCATTERgcc_${notdir ${@:.axf=}}}";					 \
-	fi;																  \
+	ldname="${SCATTERgcc_${notdir ${@:.axf=}}}";					 \
 	${LD} -T $${ldname}												   \
 		--entry ${ENTRY_${notdir ${@:.axf=}}}						   \
 		${LDFLAGSgcc_${notdir ${@:.axf=}}}							  \
@@ -80,11 +64,6 @@ build/%.axf:
 #
 # Where to find source files that do not live in this directory.
 #
-
-#
-# Where to find header files that do not live in the source directory.
-#
-IPATH=../..
 
 PROJ_NAME=project0
 
