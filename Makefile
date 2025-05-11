@@ -40,6 +40,8 @@ LIBC:=${shell ${CC} ${CFLAGS} -print-file-name=libc.a}
 LIBM:=${shell ${CC} ${CFLAGS} -print-file-name=libm.a}
 
 
+.PHONY: clean lm4flash flash
+
 all: build/$(PROJ_NAME).axf
 
 build/$(PROJ_NAME).axf: build/$(PROJ_NAME).o build/startup.o
@@ -60,6 +62,5 @@ lm4flash: build/$(PROJ_NAME).bin
 
 flash: clean all lm4flash
 
-.PHONY: clean
 clean:
-	@rm -rf gcc ${wildcard *~}
+	@rm -rf build/*
