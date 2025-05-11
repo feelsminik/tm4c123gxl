@@ -35,7 +35,7 @@ void show_led_gradient(void) {
       color = color + LED_RED;
     }
     GPIO_PORTF_DATA_R = color;
-    wait(1000000);
+    wait(2000000);
   }
 }
 
