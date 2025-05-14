@@ -1,4 +1,4 @@
-# Linux terminal based project for TM4C123GXL
+# Terminal based project for TM4C123GXL on Linux
 
 When I started learning more about embedded development someone recommended me the development board [EK-TM4C123GXL](https://www.ti.com/tool/EK-TM4C123GXL).
 To my surprise most of the tutorials used different IDEs on Windows to get started. I didn't want abstract away most of the processes behind programming and flashing
