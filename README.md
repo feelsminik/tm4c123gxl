@@ -6,5 +6,5 @@ a MCU and wanted to use the command line on Linux. This is just a simple setup t
 
 ## Requirements
 
-- [lm4tools]("https://github.com/utzig/lm4tools"): for flashing code onto the microcontroller
-- [Arm GNU Toolchain]("https://developer.arm.com/downloads/-/gnu-rm"): for cross compiling written C code to targeted platform
+- [lm4tools](https://github.com/utzig/lm4tools): for flashing code onto the microcontroller
+- [Arm GNU Toolchain](https://developer.arm.com/downloads/-/gnu-rm): for cross compiling written C code to targeted platform
